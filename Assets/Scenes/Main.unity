@@ -147,7 +147,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317918610}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f54b82363e83de744a0d2762093c76cc, type: 3}
   m_Name: 
@@ -158,13 +158,17 @@ MonoBehaviour:
   dumpValue: 0.99
   powerAddMax: 10
   iterAddPower: 1.69
+  simple: 0
+  waveSpeed: 11.75
+  columnSize: 0.5
+  timeStep: 0.03
 --- !u!114 &317918613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 317918610}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d295d3f1384a5d14aa8a55a121eb19d4, type: 3}
   m_Name: 
@@ -173,8 +177,8 @@ MonoBehaviour:
   countX: 200
   countY: 200
   scaleI: 0.01
-  scaleJ: 0.01
-  scaleT: 1
+  scaleJ: 0.04
+  scaleT: 2
 --- !u!114 &317918614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +274,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447673644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d295d3f1384a5d14aa8a55a121eb19d4, type: 3}
   m_Name: 
@@ -287,17 +291,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 447673644}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f54b82363e83de744a0d2762093c76cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visualization: {fileID: 447673645}
-  countX: 100
-  countY: 100
+  countX: 70
+  countY: 70
   dumpValue: 0.99
-  powerAddMax: 5
-  iterAddPower: 3
+  powerAddMax: 10
+  iterAddPower: 1.69
+  simple: 0
+  waveSpeed: 11.75
+  columnSize: 0.5
+  timeStep: 0.03
 --- !u!1 &848954161
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,11 +381,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualization: {fileID: 848954162}
-  countX: 130
-  countY: 130
+  countX: 200
+  countY: 200
   dumpValue: 0.99
-  powerAddMax: 5
-  iterAddPower: 3
+  powerAddMax: 10
+  iterAddPower: 1.69
+  simple: 0
+  waveSpeed: 11.75
+  columnSize: 0.5
+  timeStep: 0.03
 --- !u!114 &848954164
 MonoBehaviour:
   m_ObjectHideFlags: 0

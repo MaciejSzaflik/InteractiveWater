@@ -76,7 +76,7 @@ public class GridSpawner : Vizualisation {
 		{
 			for(int j = 0;j<value[i].Length;j++)
 			{
-				spawnedElements[i][j].transform.localScale = new Vector3(sizeXElement,value[i][j],sizeZElement);
+				spawnedElements[i][j].transform.localScale = new Vector3(sizeXElement,value[i][j] + 0.1f,sizeZElement);
 				float positionY = (value[i][j] - 1)/2;
 				Vector3 currentPosition = spawnedElements[i][j].transform.localPosition;
 				currentPosition.y = positionY;
