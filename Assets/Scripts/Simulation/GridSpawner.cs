@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSpawner : MonoBehaviour 
-{
+public class GridSpawner : Vizualisation {
 	public GameObject prefabToSpawn;
 	public GameObject spawnerRoot;
 
@@ -15,8 +14,10 @@ public class GridSpawner : MonoBehaviour
 	private float sizeXElement;
 	private float sizeZElement;
 
-	public void Init(int countX, int countY)
+	public override void Init (int countX, int countY, System.Action<Point> onInteraction)
 	{
+		base.Init(countX, countY, onInteraction);
+
 		spawnedElements = new GameObject[countX][];
 
 		sizeXElement = (float)sizeX/countX;
@@ -35,9 +36,41 @@ public class GridSpawner : MonoBehaviour
 				obj.transform.localPosition = new Vector3(i*sizeXElement,1,j*sizeZElement);
 			}
 		}
+
+		CreateCollider();
+		OnMouseInteraction(onInteraction);
 	}
 
-	public void UpdateGrid(float[][] value)
+	private void CreateCollider()
+	{
+		minPosition = new Vector2(
+			spawnedElements[0][0].transform.position.x,
+			spawnedElements[0][0].transform.position.z
+		);
+
+		maxPosition = new Vector2(
+			spawnedElements[countX-1][countY-1].transform.position.x,
+			spawnedElements[countX-1][countY-1].transform.position.z
+		);
+
+		boxCollider = this.gameObject.AddComponent<BoxCollider>();
+
+		boxCollider.center = new Vector3(
+			(maxPosition.x - minPosition.x)/2,
+			0,
+			(maxPosition.y - minPosition.y)/2);
+		boxCollider.size = boxCollider.center*2 + new Vector3(sizeXElement,1,sizeZElement);
+	}
+
+	protected override Point GetCellFromPosition(Vector3 pos)
+	{
+		int x = Mathf.FloorToInt((pos.x - minPosition.x)/sizeXElement);
+		int z = Mathf.FloorToInt((pos.z - minPosition.y)/sizeZElement);
+
+		return new Point(x,z);
+	}
+
+	public override void UpdateGrid(float[][] value)
 	{
 		for(int i = 0;i<value.Length;i++)
 		{
@@ -51,4 +84,6 @@ public class GridSpawner : MonoBehaviour
 			}
 		}
 	}
+
+
 }

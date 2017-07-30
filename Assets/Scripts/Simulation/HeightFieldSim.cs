@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HeightFieldSim : RandomSim {
 
-	public float scaleI = 1;
-	public float scaleJ = 1;
-
 	protected float[][] velocites;
+	public float dumpValue = 0.99f;
+	public float powerAddMax = 5;
+	public float iterAddPower = 3;
 
 	public override void Init ()
 	{
@@ -19,14 +19,17 @@ public class HeightFieldSim : RandomSim {
 			velocites[i] = new float[countY];
 			values[i] = new float[countY];
 			for(int j = 0;j<countY;j++)
-			{
-				values[i][j] = Mathf.Max(0, Mathf.Sin(i * scaleI+ j * scaleJ )*0.5f + 1);
-				velocites[i][j] = 0;
-			}
+				values[i][j] = velocites[i][j] = 0;
 		}
 
 		if(visualization != null)
-			visualization.Init(countX,countY);
+			visualization.Init(countX,countY,AddValueAtPoint);
+	}
+
+
+	private void AddValueAtPoint(Point p)
+	{
+		values[p.x][p.y] = Mathf.Min(powerAddMax,values[p.x][p.y]+iterAddPower);
 	}
 
 	void Update()
@@ -41,7 +44,7 @@ public class HeightFieldSim : RandomSim {
 					values[i][Mathf.Max(0,j - 1)] +
 					values[i][Mathf.Min(j + 1,countY-1)])/4 - values[i][j];
 				
-				velocites[i][j] *= 0.99f;
+				velocites[i][j] *= dumpValue;
 			}
 		}
 

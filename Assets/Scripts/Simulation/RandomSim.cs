@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RandomSim : MonoBehaviour {
 
-	public GridSpawner visualization;
+	public Vizualisation visualization;
 
 	public int countX = 0;
 	public int countY = 0;
+
+	protected float randomPower = 0.01f;
 
 	protected float [][] values;
 
@@ -25,7 +27,7 @@ public class RandomSim : MonoBehaviour {
 		}
 
 		if(visualization != null)
-			visualization.Init(countX,countY);
+			visualization.Init(countX,countY,null);
 	}
 
 	void Start()
@@ -41,7 +43,7 @@ public class RandomSim : MonoBehaviour {
 			{
 				values[i][j] = Mathf.Max(
 					0, 
-					values[i][j] + Random.Range(-0.1f,0.1f));
+					values[i][j] + Random.Range(-randomPower,randomPower));
 			}
 		}
 
