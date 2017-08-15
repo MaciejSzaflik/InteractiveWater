@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeshVisualsation : Vizualisation {
+public class MeshVisualization : Visualization {
 
 	public Material material;
 	public float spacing = 0.25f;
@@ -14,7 +14,7 @@ public class MeshVisualsation : Vizualisation {
 	{
 		this.countX = countX;
 		this.countY = countY;
-		OnMouseInteraction(onInteraction);
+		AddOnMouseInteraction(onInteraction);
 
 		mesh = new Mesh();
 		CreateStartVertices();

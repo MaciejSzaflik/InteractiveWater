@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleSpawner : Vizualisation {
+public class ParticleSpawner : Visualization {
 
 	public float colorDiv = 2;
 	public float spacing = 0.25f;

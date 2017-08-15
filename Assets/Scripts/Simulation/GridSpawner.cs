@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSpawner : Vizualisation {
+public class GridSpawner : Visualization {
 	public GameObject prefabToSpawn;
 	public GameObject spawnerRoot;
 
 	public int sizeX = 0;
 	public int sizeZ = 0;
+
+	public float spacing = 0;
 
 	private GameObject[][] spawnedElements;
 
@@ -33,12 +35,12 @@ public class GridSpawner : Vizualisation {
 				spawnedElements[i][j] = obj;
 				obj.transform.SetParent(spawnerRoot.transform);
 				obj.transform.localScale = new Vector3(sizeXElement,1,sizeZElement);
-				obj.transform.localPosition = new Vector3(i*sizeXElement,1,j*sizeZElement);
+				obj.transform.localPosition = new Vector3(i*sizeXElement + spacing*i,1,j*sizeZElement + spacing*j);
 			}
 		}
 
 		CreateCollider();
-		OnMouseInteraction(onInteraction);
+		AddOnMouseInteraction(onInteraction);
 	}
 
 	private void CreateCollider()

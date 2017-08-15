@@ -67,5 +67,4 @@ Shader "Skybox/Gradient Skybox"
             ENDCG
         }
     }
-    CustomEditor "GradientSkyboxInspector"
 }

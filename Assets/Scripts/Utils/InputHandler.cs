@@ -15,9 +15,6 @@ public class MouseEvent : EventArgs
 
 public class InputHandler : Singleton<InputHandler> {
 
-
-	public delegate void MouseHandler(object sender, Vector2 mousePosition);
-
 	public event EventHandler OnButtonDown = delegate {};
 	public event EventHandler OnButtonHold = delegate {};
 	public event EventHandler OnButtonUp = delegate {};

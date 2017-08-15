@@ -20,11 +20,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 				{
 					_instance = (T) FindObjectOfType(typeof(T));
 
-					if ( FindObjectsOfType(typeof(T)).Length > 1 )
-					{
-						return _instance;
-					}
-
 					if (_instance == null)
 					{
 						GameObject singleton = new GameObject();

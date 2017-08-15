@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomSim : MonoBehaviour {
 
-	public Vizualisation visualization;
+	public Visualization visualization;
 
 	public int countX = 0;
 	public int countY = 0;

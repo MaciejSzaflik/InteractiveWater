@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vizualisation : MonoBehaviour {
+public abstract class Visualization : MonoBehaviour {
 
 	protected int countX;
 	protected int countY;
@@ -14,10 +14,10 @@ public class Vizualisation : MonoBehaviour {
 	{
 		this.countX = countX;
 		this.countY = countY;
-		OnMouseInteraction(onInteraction);
+		AddOnMouseInteraction(onInteraction);
 	}
 	public virtual void UpdateGrid(float[][] value){}
-	protected virtual void OnMouseInteraction (System.Action<Point> onInteraction)
+	protected virtual void AddOnMouseInteraction (System.Action<Point> onInteraction)
 	{
 		InputHandler.Instance.OnButtonHold += (object sender, System.EventArgs e) => {
 			if(onInteraction==null)
@@ -37,6 +37,6 @@ public class Vizualisation : MonoBehaviour {
 			}
 		};
 	}
-	protected virtual Point GetCellFromPosition(Vector3 pos){return new Point(-1,-1);}
+	protected abstract Point GetCellFromPosition(Vector3 pos);
 
 }
